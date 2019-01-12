@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有人在么</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+    <div id="VueApp" v-cloak>
+
+
+        <!--<div id="player" :style=" { 'top' : currentPlayer.position.y + 'px','left': currentPlayer.position.x + 'px' }">
+            你
+        </div>
+        <div class="playersPlayground">
+            <div class="player" v-for="player in players" :style="{ 'top':player.position.y + 'px','left':player.position.x + 'px'}">{{player.name}}</div>
+        </div>-->
+        <canvas id="output"></canvas>
+        <div class="UISystem">
+            <div class="currentPlayer">
+                <p class="name">name:{{currentPlayer.name}}</p>
+                <p>x:{{Math.round(currentPlayer.position.x)}}</p>
+                <p>y:{{Math.round(currentPlayer.position.y)}}</p>
+                <p>targetX:{{Math.round(currentPlayer.targetPosition.x)}}</p>
+                <p>targetY:{{Math.round(currentPlayer.targetPosition.y)}}</p>
+                <p>speed:{{Math.round(currentPlayer.currentInfo.speed)}}</p>
+            </div>
+            <ol class="players">
+                <li v-for="(player, index) in players">
+                    {{ index+1 }} - {{ player.name }} <br> - x: {{Math.round(player.position.x)}} <br> - y:{{Math.round(player.position.y)}}
+                </li>
+            </ol>
+            <div class="messageUI" :class="[messageUI.isHide?'hidden':'show']">
+                <div class="hideAndShow" @click="messageShow()">
+                    <div class="wrapper" :class="[messageUI.isHide?'':'active']">
+                        <div class="open">&gt;</div>
+                        <div class="close">&lt;</div>
+                    </div>
+                </div>
+                <div class="msgBorder">
+                    <div class="msgContainer" id="msgContainer">
+                        <div class="singleMsg" v-for="(item,index) in messageUI.msgGroup">
+                            <div class="name"><span :style="{color:item.color}">{{item.player}}</span><span v-if="item.time!==''">({{item.time}})</span>:</div>
+                            <div class="msg">{{item.msg}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="messageSend" :class="[messageUI.inputting?'show':'hidden']">
+                <div id="messageInput" v-model="messageUI.preMessage" tabindex = "1" autofocus="autofocus" class="messageInput" contenteditable="true"></div>
+                <button class="send" @click="sendMessage()">enter</button>
+            </div>
+            <div class="loginMask" :class="[loginUI.allHidden?'hidden':'show']">
+                <div class="loader" :class="[loginUI.ishidden?'hidden':'show']"></div>
+                <p class="connectingText" :class="[loginUI.ishidden?'hidden':'show']">连接中...</p>
+                <p :class="[loginUI.ishidden?'show':'hidden']">名字/昵称:{{loginUI.nameShow}}</p>
+                <input type="text" class="nameInput" v-model="loginUI.nameShow" :class="[loginUI.ishidden?'show':'hidden']">
+                <button id="BtnLogin" :class="[loginUI.ishidden?'show':'hidden']" @click="login">进入</button>
+                <p class="messageBox" :class="[loginUI.ishidden?'show':'hidden']">{{loginUI.info}}</p>
+            </div>
+        </div>
+    </div>
+    <script src="http://file.bunnycastle.top/js/vue.min.js"></script>
+    <script src="js/keypress.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="https://cdn.bootcss.com/socket.io/2.1.1/socket.io.js"></script>
+    <script src="js/connection.js"></script>
+    <script src="js/game.js"></script>
+    <script src="https://cdn.bootcss.com/three.js/92/three.min.js"></script>
+    <script src="js/stats.min.js"></script>
+    <script src="js/gameRender.js"></script>
+</body>
+</html>

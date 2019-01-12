@@ -1,0 +1,7 @@
+.messageUI { overflow: visible; }
+.messageUI .msgBorder { overflow: hidden; width: 100%; height: 100%; }
+.messageUI .msgBorder .msgContainer { color: white; font-size: 16px; line-height: 24px; padding: 10px; width: 280px; overflow-y: auto; overflow-x: hidden; height: 100%; }
+.messageUI .msgBorder .msgContainer .singleMsg { margin: 5px 0; }
+.messageUI .msgBorder .msgContainer .singleMsg .msg { text-indent: 1em; }
+
+/*# sourceMappingURL=test.css.map */

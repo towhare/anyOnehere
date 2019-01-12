@@ -1,0 +1,25 @@
+
+.messageUI{
+  overflow: visible;
+  .msgBorder{
+    overflow: hidden;
+    width:100%;
+    height:100%;
+    .msgContainer{
+      color:white;
+      font-size:16px;
+      line-height: 24px;
+      padding:10px;
+      width: 280px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height:100%;
+      .singleMsg{
+        margin:5px 0;
+        .msg{
+          text-indent:1em;
+        }
+      }
+    }
+  }
+}

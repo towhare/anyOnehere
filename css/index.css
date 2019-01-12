@@ -1,0 +1,310 @@
+@charset "utf-8";
+*{
+    margin:0;padding:0;
+    box-sizing:border-box;
+}
+body{
+    position:absolute;
+    width:100%;
+    height: 100%;
+}
+#VueApp .currentPlayer{
+    width:200px;
+    height:auto;
+    padding:10px;
+    font-size:16px;
+    line-height: 20px;
+    color:white;
+    background-color: #333333;
+    position:fixed;
+    right:0;
+    top:0;
+}
+#player{
+    width:100px;
+    height: 100px;
+    background-color: #ffffff;
+    position:relative;
+    border: 5px solid transparent;
+    border-radius:50%;
+    background-clip: padding-box;
+    padding: 5px;
+    background-image: url(../img/headIcon.png);
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    text-align:center;
+    background-position: center center;
+}
+#player::before{
+    position: absolute;
+    top: -5px; bottom: -5px;
+    left: -5px; right: -5px;
+    background: linear-gradient(rgba(233,233,233,0.5), rgba(200,200,200,1));
+    content: '';
+    z-index: -1;
+    border-radius: 50%;
+}
+#VueApp ol.players{
+    width:150px;
+    height:auto;
+    padding:10px;
+    font-size:16px;
+    line-height: 24px;
+    color:white;
+    background-color: rgba(0,0,0,0.4);
+    position:fixed;
+    left:0;
+    top:0;
+    list-style:none;
+
+}
+[v-cloak]{
+    display: none;
+}
+#VueApp .UISystem{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+}
+#VueApp .loginMask{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+}
+.loader {
+    width: 5em;
+    height: 13em;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ball */
+.loader::before {
+    content: '';
+    width: 5em;
+    height: 5em;
+    background-color: #F0FAC5;
+    border-radius: 50%;
+    animation: ball-jumping 1s ease-in-out infinite;
+}
+
+@keyframes ball-jumping {
+    20%, 80% {
+        transform: translateY(-2em);
+    }
+
+    50% {
+        transform: translateY(calc((8em - 5em) / 2));
+    }
+}
+
+/* rectangle */
+.loader::after {
+    content: '';
+    width: 5em;
+    height: 8em;
+    background-color: #FF9E60;
+    border-radius: 0.5em;
+    animation: rect-rotating 1s ease-in-out infinite;
+}
+
+@keyframes rect-rotating {
+    50% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+#VueApp .loginMask p{
+    font-size:18px;
+    line-height: 36px;
+    color:white;
+    text-align:center;
+}
+#VueApp .loginMask .connectingText{
+    line-height: 48px;
+}
+#VueApp .loginMask .hidden{
+    display: none;
+}
+#VueApp .loginMask .nameInput{
+    width:150px;
+    height:40px;
+    background-color: #fff;
+    text-align:center;
+    font-size:24px;
+}
+#BtnLogin{
+    background-color: #FF9E60;
+    color:white;
+    width:80px;
+    height:36px;
+    font-size:20px;
+    border:none;
+    border-radius:4px;
+    display: block;
+    margin:10px 0;
+}
+#BtnLogin:hover{
+    cursor:pointer;
+}
+#VueApp .loginMask .messageBox{
+    color:#ffcccc;
+}
+#VueApp .loginMask.hidden{
+    display: none;
+}
+#VueApp .loginMask.show{
+    display: flex;
+}
+.playersPlayground{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.playersPlayground  .player{
+    width:100px;
+    height: 100px;
+    background-color: #ffffff;
+    position:absolute;
+    border: 5px solid transparent;
+    border-radius:50%;
+    background-clip: padding-box;
+    padding: 5px;
+    text-align:center;
+    background-image: url(../img/headIcon.png);
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-position: center center;
+}
+.playersPlayground .player::before{
+    position: absolute;
+    top: -5px; bottom: -5px;
+    left: -5px; right: -5px;
+    background: linear-gradient(rgba(233,233,233,0.5), rgba(200,200,200,1));
+    content: '';
+    z-index: -1;
+    border-radius: 50%;
+}
+#output{
+    position:fixed;
+    top:0;left:0;
+    width: 100%;
+    height:100%;
+}
+.UISystem .messageUI{
+    width:260px;
+    height: 500px;
+    background-color: rgba(20,20,160,0.4);
+    color:white;position:fixed;
+    top:200px;
+    left:0;
+    transition:all .5s;
+}
+.UISystem .messageUI.hidden{
+    left:-260px;
+}
+.UISystem .messageUI.show{
+    left:0;
+}
+.UISystem .messageUI .hideAndShow{
+    width:40px;
+    height: 40px;
+    position: absolute;
+    right:-40px;
+    background-color: rgba(255,255,255,0.4);
+    border:none;
+    overflow: hidden;
+    border-radius:0 20px 20px 0;
+}
+.UISystem .messageUI .hideAndShow .wrapper{
+    width:200%;
+    transition:all .5s;
+    height:100%;
+    position: absolute;top:0;
+    left:0;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content:stretch;
+
+}
+.UISystem .messageUI .hideAndShow .wrapper:hover{cursor:pointer;}
+.UISystem .messageUI .hideAndShow .wrapper .open{
+    width:50%;
+    height: 100%;
+    font-size:26px;
+    line-height: 40px;
+    text-align:center;
+    float: left;
+}
+.UISystem .messageUI .hideAndShow .wrapper.active{
+    left:-40px;
+}
+.UISystem .messageUI .hideAndShow .wrapper .close{
+    width:50%;
+    height: 100%;
+    font-size:26px;
+    line-height: 40px;
+    text-align:center;
+    float: left;
+}
+.UISystem .messageSend{
+    width: 440px;
+    height: auto;
+    padding:10px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items:center;
+    position:fixed;bottom:40px;
+    left:50%;
+    margin-left:-220px;
+    transition: all .5s;
+}
+#messageInput{
+    width:200px;
+    overflow-x:visible;
+    padding:5px;
+    font-size:16px;
+    line-height: 26px;
+    background-color: rgba(100,100,255,0.4);
+    border:2px solid #66ccee;
+    color:#ffffff;
+    caret-color:#fff;
+
+}
+.UISystem .messageSend .send{
+    width:80px;
+    height: 32px;
+    background-color: #FF9E60;
+    color: #ffffff;
+    border:none;
+    margin:0 10px;
+    border-radius:5px;
+    transition:background-color .5s;
+}
+.UISystem .messageSend .send:hover{
+    cursor:pointer;
+    background-color: #ee9933;
+}
+.UISystem .messageSend.hidden{
+    opacity:0;
+    bottom:-80px;
+}
+.UISystem .messageSend.hidden.show{
+    opacity:1;
+    bottom:40px;
+}
